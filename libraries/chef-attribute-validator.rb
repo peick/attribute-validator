@@ -47,6 +47,28 @@ class Chef
         end
       end
 
+      def self.validate(the_node, the_rules, fail_action='error')
+        violas = Chef::Attribute::Validator.new(the_node, the_rules).validate_all()
+
+        unless violas.empty?
+          message  = "The node attributes for this chef run failed validation!\n"
+          message += "A total of #{violas.size} violation(s) were encountered.\n"
+
+          Chef::Log.warn(message)
+          violas.each do |violation|
+            snippet = violation.rule_name + ' at ' + violation.path + ': ' + violation.message
+            message += snippet + "\n"
+            if fail_action == 'warn'
+              Chef::Log.warn 'Violation: ' + snippet
+            end
+          end
+
+          if fail_action == 'error'
+            fail message
+          end
+        end
+      end
+
     end
   end
 end

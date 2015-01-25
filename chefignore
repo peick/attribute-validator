@@ -2,20 +2,6 @@
 # or sharing to the community site.
 # Lines that start with '# ' are comments.
 
-*~
-
-# OS generated files #
-######################
-.DS_Store
-Icon?
-nohup.out
-ehthumbs.db
-Thumbs.db
-
-# SASS #
-########
-.sass-cache
-
 # EDITORS #
 ###########
 \#*
@@ -31,19 +17,6 @@ tmtags
 *.tmproj
 .project
 .settings
-mkmf.log
-
-## COMPILED ##
-##############
-a.out
-*.o
-*.pyc
-*.so
-*.com
-*.class
-*.dll
-*.exe
-*/rdoc/
 
 # Testing #
 ###########

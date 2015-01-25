@@ -1,13 +1,13 @@
-name             'attribute-validator'
-maintainer       'Clinton Wolfe'
-maintainer_email 'clinton@omniti.com'
+name             'attribute-validator-ng'
+maintainer       'Michael Peick'
+maintainer_email 'chef@n-pq.de'
 license          'BSD (3-clause)'
-description      'Enforces attribute validation rules using the chef-attribute-validator gem.'
+description      'Enforces attribute validation rules.'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.3.4'
+version          '0.4.0'
 
-recipe 'install', 'Installs chef-attribute-validator gem to chef ruby gemstore'
 recipe 'compile-time-check', 'Enforces attribute validation rules at compile time'
 recipe 'converge-time-check', 'Enforces attribute validation rules at convergence time'
+recipe 'default', 'Runs converge-time-check'
 
 

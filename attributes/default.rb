@@ -1,2 +1,2 @@
-default['attribute-validator']['rules'] = {}
-default['attribute-validator']['fail-action'] = 'error'
+default['attribute-validator-ng']['rules'] = {}
+default['attribute-validator-ng']['fail-action'] = 'error'
