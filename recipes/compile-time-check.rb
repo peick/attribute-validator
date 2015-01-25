@@ -7,7 +7,7 @@
 
 Chef::Log.info('Running compile-time node attribute validations')
 
-Chef::Attribute::Validate.validate(
+Chef::Attribute::Validator.validate(
   node['attribute-validator-ng']['rules'],
-  node['attribute-validator-ng']['fail-action'],
-  node)
+  node,
+  node['attribute-validator-ng']['fail-action'])

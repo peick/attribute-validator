@@ -7,9 +7,9 @@
 
 ruby_block 'convergence time attribute validation' do
   block do
-    Chef::Attribute::Validate.validate(
+    Chef::Attribute::Validator.validate(
       node['attribute-validator-ng']['rules'],
-      node['attribute-validator-ng']['fail-action'],
-      node)
+      node,
+      node['attribute-validator-ng']['fail-action'])
   end
 end

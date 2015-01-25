@@ -47,7 +47,7 @@ class Chef
         end
       end
 
-      def self.validate(the_node, the_rules, fail_action='error')
+      def self.validate(the_rules, the_node, fail_action='error')
         violas = Chef::Attribute::Validator.new(the_node, the_rules).validate_all()
 
         unless violas.empty?

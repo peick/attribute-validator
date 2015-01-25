@@ -38,7 +38,7 @@ Another way to enforce attribute validation is to do it inside your cookbook's r
         'type' => 'boolean'
     }
 
-    Chef::Attribute::Validator.validate rules
+    Chef::Attribute::Validator.validate rules, node
 
     ... rest of the recipe ...
 
