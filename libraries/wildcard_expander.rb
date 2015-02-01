@@ -31,7 +31,7 @@ class Chef
         def fetch_val_by_slashpath(slashpath)
           nv = node
           steps = slashpath_to_steps(slashpath)
-          while steps.size > 0 
+          while steps.size > 0
             step = steps.shift
             if nv.kind_of?(Chef::Node::ImmutableArray) then
               step = convert_step_to_integer(step)
@@ -43,34 +43,34 @@ class Chef
         end
 
         def convert_step_to_integer(step)
-          if step.match(/^\d+$/) then 
-            # Treat things that start with leading zeros as strings, not as integers.  This supports 
+          if step.match(/^\d+$/) then
+            # Treat things that start with leading zeros as strings, not as integers.  This supports
             # having attributes like '00', and calling that an error if you try to access the 00 element of an array.
             return nil if step.match(/^0+\d+$/)
             return step.to_i
           else
             return nil
-          end          
+          end
         end
 
         def path_exists_by_slashpath? (slashpath)
           nv = node
           steps = slashpath_to_steps(slashpath)
-          while steps.size > 0 
+          while steps.size > 0
             step = steps.shift
-            
+
             if nv.kind_of?(Chef::Node::ImmutableArray) then
 
-              step_as_int = convert_step_to_integer(step) 
+              step_as_int = convert_step_to_integer(step)
               return false if step_as_int.nil? # Given a non-int path step for an array...
-              
+
               if nv.size > step_as_int then
                 nv = nv[step_as_int]
               else
                 # Array not long enough
                 return false
               end
-              
+
             elsif nv.respond_to?(:has_key?) then
               if nv.has_key?(step) then
                 nv = nv[step]
@@ -83,7 +83,7 @@ class Chef
               return false
             end
           end
-          return true      
+          return true
         end
 
 
@@ -93,7 +93,7 @@ class Chef
            /\*\*/,
            /\?/,
            /\[\w+\]/,
-           /\{\w+(\s*,\s*\w+)?\}/, 
+           /\{\w+(\s*,\s*\w+)?\}/,
           ].any? { |r| r.match(path) }
         end
 
@@ -113,6 +113,3 @@ class Chef
   end
 end
 
-Dir.glob(File.join(File.dirname(__FILE__), 'wildcard_expander', '*.rb')).each do |expander_implementation|
-  require expander_implementation
-end

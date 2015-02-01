@@ -1,7 +1,7 @@
 
 require 'forwardable'
 
-require_relative './wildcard_expander'
+require_relative 'wildcard_expander'
 
 class Chef
   class Attribute

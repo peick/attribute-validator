@@ -48,6 +48,3 @@ class Chef
   end
 end
 
-Dir.glob(File.join(File.dirname(__FILE__), 'checks', '*.rb')).each do |check_implementation|
-  require check_implementation
-end
